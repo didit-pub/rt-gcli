@@ -118,3 +118,14 @@ release:
 	fi
 	git tag -a v$(NEW_VERSION) -m "Release version $(NEW_VERSION)"
 	git push origin v$(NEW_VERSION)
+
+.PHONY: pr-close
+pr-close:
+	@PR_ID=$$(gh pr view --json number -q '.number') && \
+	gh pr merge -m -d $$PR_ID
+
+.PHONY: pr
+pr-%:
+	git checkout -b $*
+	git push --set-upstream origin $*
+	gh pr create --fill
