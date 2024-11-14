@@ -55,6 +55,7 @@ func init() {
 		newCommentCmd(),
 		newVersionCmd(),
 		newUpdateMeCmd(),
+		newConfigureCmd(),
 	)
 }
 
@@ -65,12 +66,12 @@ func initConfig() {
 		viper.SetConfigFile(cfgFile)
 	} else {
 		// Configurar los posibles nombres y ubicaciones del archivo de configuracion
-		viper.SetConfigName(".sgsi-rt-cli")
+		viper.SetConfigName(".rt-gcli")
 		// Añadir rutas de busqueda en orden de preferencia
 		viper.AddConfigPath(".")
 		viper.AddConfigPath("$HOME")
 	}
-	viper.SetEnvPrefix("SGSI_RT")
+	viper.SetEnvPrefix("RT_GCLI")
 	viper.AutomaticEnv()
 
 	if err := viper.ReadInConfig(); err == nil {
