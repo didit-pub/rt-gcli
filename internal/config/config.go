@@ -5,12 +5,12 @@ import (
 )
 
 type Config struct {
-	URL      string        `mapstructure:"url"`
-	APIURL   string        `mapstructure:"apiurl"`
-	Username string        `mapstructure:"username"`
-	Password string        `mapstructure:"password"`
-	Token    string        `mapstructure:"token"`
-	Timeout  time.Duration `mapstructure:"timeout"`
-	Debug    bool          `mapstructure:"debug"`
-	Me       string        `mapstructure:"me"`
+	URL      string        `json:"url,omitempty" mapstructure:"url,omitempty"`
+	APIURL   string        `json:"apiurl,omitempty" mapstructure:"apiurl,omitempty"`
+	Username string        `json:"username,omitempty" mapstructure:"username,omitempty"`
+	Password string        `json:"password,omitempty" mapstructure:"password,omitempty"`
+	Token    string        `json:"token,omitempty" mapstructure:"token,omitempty"`
+	Timeout  time.Duration `json:"timeout,omitempty" mapstructure:"timeout,omitempty"`
+	Debug    bool          `json:"debug,omitempty" mapstructure:"debug,omitempty"`
+	Me       string        `json:"me,omitempty" mapstructure:"me,omitempty"`
 }
