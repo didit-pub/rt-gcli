@@ -48,7 +48,7 @@ func CheckForUpdates() (*GitHubRelease, bool, error) {
 
 func DoSelfUpdate(release *GitHubRelease) error {
 	// Construir el nombre del binario para la plataforma actual
-	binaryName := fmt.Sprintf("app-%s-%s", runtime.GOOS, runtime.GOARCH)
+	binaryName := fmt.Sprintf("rtg-%s-%s", runtime.GOOS, runtime.GOARCH)
 	if runtime.GOOS == "windows" {
 		binaryName += ".exe"
 	}
@@ -63,7 +63,7 @@ func DoSelfUpdate(release *GitHubRelease) error {
 	}
 
 	if downloadURL == "" {
-		return fmt.Errorf("no se encontró binario para %s-%s", runtime.GOOS, runtime.GOARCH)
+		return fmt.Errorf("no binary found for %s-%s", runtime.GOOS, runtime.GOARCH)
 	}
 
 	// Descargar el nuevo binario
@@ -74,7 +74,7 @@ func DoSelfUpdate(release *GitHubRelease) error {
 	defer resp.Body.Close()
 
 	// Crear archivo temporal
-	tempFile, err := os.CreateTemp("", "app-update")
+	tempFile, err := os.CreateTemp("", "rtg-update")
 	if err != nil {
 		return err
 	}
